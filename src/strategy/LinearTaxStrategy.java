@@ -1,4 +1,4 @@
-package taxes;
+package strategy;
 
 import items.Item;
 

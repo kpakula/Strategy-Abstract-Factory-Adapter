@@ -1,5 +1,5 @@
 import items.Item;
-import taxes.Tax;
+import strategy.Tax;
 
 import java.util.ArrayList;
 import java.util.List;

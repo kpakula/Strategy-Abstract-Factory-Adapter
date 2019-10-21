@@ -1,8 +1,10 @@
+import factory.poland.PolandTaxFactory;
+import factory.TaxFactory;
 import items.Book;
 import items.Item;
 import items.Painting;
 import items.Sculpture;
-import taxes.*;
+import strategy.*;
 
 public class App {
     public static void main(String[] args) {
@@ -49,6 +51,13 @@ public class App {
         tax1 = new Tax(progressiveTaxStrategy);
         System.out.println(Math.round(m1.pobierzWartoscPoOpodatkowaniu(tax1) * 100.0) / 100.0);
 
+
+        // Poland
+        TaxFactory polandFactory = new PolandTaxFactory();
+        tax1 = new Tax(polandFactory.makeLinearTax());
+        System.out.println(m1.pobierzWartoscPoOpodatkowaniu(tax1));
+        tax1 = new Tax(polandFactory.makeProgressiveTax());
+        System.out.println(m1.pobierzWartoscPoOpodatkowaniu(tax1));
 
 
     }
