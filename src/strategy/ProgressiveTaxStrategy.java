@@ -18,7 +18,6 @@ public class ProgressiveTaxStrategy implements TaxStrategy {
 
     @Override
     public double calculateTax(List<Item> itemList) {
-        System.out.println("Progressive");
         double allPrice = 0;
         for (Item item : itemList) {
             allPrice += item.getPrice();
