@@ -16,7 +16,7 @@ public class ProgressiveTaxStrategy implements TaxStrategy {
 
         double withoutTax = 0;
         if (allPrice <= 10000) {
-            withoutTax = allPrice - (allPrice * 18);
+            withoutTax = allPrice - (allPrice * 0.18);
             return withoutTax;
         } else {
             double firstTax = 10000 * 0.18;
