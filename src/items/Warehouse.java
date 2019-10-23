@@ -1,6 +1,5 @@
 package items;
 
-import items.Item;
 import strategy.Tax;
 
 import java.util.ArrayList;

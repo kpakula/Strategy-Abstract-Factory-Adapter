@@ -3,7 +3,6 @@ package items;
 public class Sculpture extends Item {
     private double size;
 
-    public Sculpture() {}
 
     public Sculpture(int year, double size) {
         super(year);

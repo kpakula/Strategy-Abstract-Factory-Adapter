@@ -2,8 +2,7 @@ package items;
 
 public class Painting extends Item {
 
-    public Painting() {
-    }
+
 
     public Painting(int year) {
         super(year);

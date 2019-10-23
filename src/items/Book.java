@@ -3,7 +3,6 @@ package items;
 public class Book extends Item{
     private int symbol;
 
-    public Book() {}
 
     public Book(int year, int symbol) {
         super(year);
