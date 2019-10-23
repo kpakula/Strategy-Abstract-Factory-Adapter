@@ -37,8 +37,8 @@ public class App {
 
 
         //1.
-        TaxStrategy linearTaxStrategy = new LinearTaxStrategy();
-        TaxStrategy progressiveTaxStrategy = new ProgressiveTaxStrategy();
+        TaxStrategy linearTaxStrategy = new LinearTaxStrategy(0.18);
+        TaxStrategy progressiveTaxStrategy = new ProgressiveTaxStrategy(10000, 0.18, 0.32);
         TaxStrategy noTaxStrategy = new NoTaxStrategy();
 
 
@@ -50,9 +50,9 @@ public class App {
 
         tax = new Tax(progressiveTaxStrategy);
         System.out.println(Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
-
-
-
+//
+//
+//
         // 2.
 
         System.out.println("\nPOLAND");
@@ -62,8 +62,8 @@ public class App {
         System.out.println(Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
         tax = new Tax(polandFactory.makeProgressiveTax());
         System.out.println(Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
-
-
+//
+//
         System.out.println("\nFRANCE");
         //France
         TaxFactory franceFactory = new FranceTaxFactory();
@@ -71,7 +71,7 @@ public class App {
         System.out.println(Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
         tax = new Tax(franceFactory.makeProgressiveTax());
         System.out.println(Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
-
+//
         System.out.println("\nGERMANY");
         // Germany
         TaxFactory germanyFactory = new GermanyTaxFactory();
@@ -79,7 +79,7 @@ public class App {
         System.out.println(Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
         tax = new Tax(germanyFactory.makeProgressiveTax());
         System.out.println(Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
-
+//
         System.out.println("\nUSA");
         // Usa
         TaxFactory usaFactory = new USATaxFactory();
@@ -87,57 +87,57 @@ public class App {
         System.out.println(Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
         tax = new Tax(usaFactory.makeProgressiveTax());
         System.out.println(Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
-
-
-        // 3
-        TaxFactory polandTaxFactory = new PolandTaxFactory();
-        TaxFactory usaTaxFactory = new USATaxFactory();
-        TaxFactory franceTaxFactory = new FranceTaxFactory();
-        TaxFactory germanyTaxFactory = new GermanyTaxFactory();
-
-
-        // Poland
-
-        System.out.println("\nPoland in euro");
-        PlnToEuroAdapter plnToEuroAdapterLinear = new PlnToEuroAdapter(polandTaxFactory.makeLinearTax());
-        PlnToEuroAdapter plnToEuroAdapterProgressive = new PlnToEuroAdapter(polandTaxFactory.makeProgressiveTax());
-
-        tax = new Tax(plnToEuroAdapterLinear);
-        System.out.println("Poland in Euro Linear: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
-        tax = new Tax(plnToEuroAdapterProgressive);
-        System.out.println("Poland in Euro Progressive" + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
-
-
-
-        // USA
-
-        System.out.println("\nUsa in euro");
-        UsdToEuroAdapter usdToEuroAdapterLinear = new UsdToEuroAdapter(usaTaxFactory.makeLinearTax());
-        UsdToEuroAdapter usdToEuroAdapterProgressive = new UsdToEuroAdapter(usaTaxFactory.makeProgressiveTax());
-
-
-        tax = new Tax(usdToEuroAdapterLinear);
-        System.out.println("USA in Euro Linear: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
-        tax = new Tax(usdToEuroAdapterProgressive);
-        System.out.println("USA in Euro Progressive: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
-
-
-        // France
-
-        System.out.println("\nFrance in euro");
-
-        tax = new Tax(franceTaxFactory.makeLinearTax());
-        System.out.println("France in Euro Linear: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
-        tax = new Tax(franceTaxFactory.makeProgressiveTax());
-        System.out.println("France in Euro Progressive: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
-
-        // German
-
-        System.out.println("\nGerman in euro");
-        tax = new Tax(germanyTaxFactory.makeLinearTax());
-        System.out.println("German in Euro Linear: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
-        tax = new Tax(germanyTaxFactory.makeProgressiveTax());
-        System.out.println("German in Euro Progressive: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
+//
+//
+//        // 3
+//        TaxFactory polandTaxFactory = new PolandTaxFactory();
+//        TaxFactory usaTaxFactory = new USATaxFactory();
+//        TaxFactory franceTaxFactory = new FranceTaxFactory();
+//        TaxFactory germanyTaxFactory = new GermanyTaxFactory();
+//
+//
+//        // Poland
+//
+//        System.out.println("\nPoland in euro");
+//        PlnToEuroAdapter plnToEuroAdapterLinear = new PlnToEuroAdapter(polandTaxFactory.makeLinearTax());
+//        PlnToEuroAdapter plnToEuroAdapterProgressive = new PlnToEuroAdapter(polandTaxFactory.makeProgressiveTax());
+//
+//        tax = new Tax(plnToEuroAdapterLinear);
+//        System.out.println("Poland in Euro Linear: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
+//        tax = new Tax(plnToEuroAdapterProgressive);
+//        System.out.println("Poland in Euro Progressive" + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
+//
+//
+//
+//        // USA
+//
+//        System.out.println("\nUsa in euro");
+//        UsdToEuroAdapter usdToEuroAdapterLinear = new UsdToEuroAdapter(usaTaxFactory.makeLinearTax());
+//        UsdToEuroAdapter usdToEuroAdapterProgressive = new UsdToEuroAdapter(usaTaxFactory.makeProgressiveTax());
+//
+//
+//        tax = new Tax(usdToEuroAdapterLinear);
+//        System.out.println("USA in Euro Linear: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
+//        tax = new Tax(usdToEuroAdapterProgressive);
+//        System.out.println("USA in Euro Progressive: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
+//
+//
+//        // France
+//
+//        System.out.println("\nFrance in euro");
+//
+//        tax = new Tax(franceTaxFactory.makeLinearTax());
+//        System.out.println("France in Euro Linear: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
+//        tax = new Tax(franceTaxFactory.makeProgressiveTax());
+//        System.out.println("France in Euro Progressive: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
+//
+//        // German
+//
+//        System.out.println("\nGerman in euro");
+//        tax = new Tax(germanyTaxFactory.makeLinearTax());
+//        System.out.println("German in Euro Linear: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
+//        tax = new Tax(germanyTaxFactory.makeProgressiveTax());
+//        System.out.println("German in Euro Progressive: " + Rounder.round(m1.pobierzWartoscPoOpodatkowaniu(tax)));
 
     }
 }

@@ -6,6 +6,16 @@ import java.util.List;
 
 public class ProgressiveTaxStrategy implements TaxStrategy {
 
+    private double threshold;
+    private double firstTaxThreshold;
+    private double secondTaxThreshold;
+
+    public ProgressiveTaxStrategy(double threshold, double firstTaxThreshold, double secondTaxThreshold) {
+        this.threshold = threshold;
+        this.firstTaxThreshold = firstTaxThreshold;
+        this.secondTaxThreshold = secondTaxThreshold;
+    }
+
     @Override
     public double calculateTax(List<Item> itemList) {
         System.out.println("Progressive");
@@ -15,18 +25,17 @@ public class ProgressiveTaxStrategy implements TaxStrategy {
         }
 
         double withoutTax = 0;
-        if (allPrice <= 10000) {
-            withoutTax = allPrice - (allPrice * 0.18);
+        if (allPrice <= threshold) {
+            withoutTax = allPrice - (allPrice * firstTaxThreshold);
             return withoutTax;
         } else {
-            double firstTax = 10000 * 0.18;
-            double priceAfterFirstTax = allPrice - 10000;
+            double firstTax = threshold * firstTaxThreshold;
+            double priceAfterFirstTax = allPrice - threshold;
 
-            double secondTax = priceAfterFirstTax * 0.32;
+            double secondTax = priceAfterFirstTax * secondTaxThreshold;
 
 
             return allPrice - (firstTax + secondTax);
         }
-
     }
 }
